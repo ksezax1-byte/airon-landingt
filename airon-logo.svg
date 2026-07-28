@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="AIron — AI Control Tower">
+  <title>AIron</title>
+  <defs>
+    <linearGradient id="aiG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="#B083FF"/>
+      <stop offset="60%" stop-color="#7A5FE5"/>
+      <stop offset="100%" stop-color="#00E5B0"/>
+    </linearGradient>
+    <linearGradient id="arcG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#5FFCD8"/>
+      <stop offset="50%" stop-color="#00E5B0"/>
+      <stop offset="100%" stop-color="#008E70"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark centered at (200, 180), viewBox center — 3 concentric arcs with satellite dots -->
+  <!-- All coordinates absolute for reliable rendering -->
+
+  <!-- OUTER ARC — R=110, from -70° to 200° clockwise (270° coverage) -->
+  <!-- Start:  (200 + 110*cos(-70°), 200 + 110*sin(-70°))  = (200 + 37.62, 200 - 103.37) = (237.62, 76.63) -->
+  <!-- End:    (200 + 110*cos(200°), 200 + 110*sin(200°))  = (200 - 103.37, 200 - 37.62) = (96.63, 162.38) -->
+  <path d="M 237.62 76.63 A 110 110 0 1 1 96.63 162.38"
+        stroke="url(#arcG)" stroke-width="9" fill="none" stroke-linecap="round"/>
+
+  <!-- MIDDLE ARC — R=80, from -40° to 150° clockwise (190° coverage) -->
+  <!-- Start:  (200 + 80*cos(-40°), 200 + 80*sin(-40°))  = (200 + 61.28, 200 - 51.42) = (261.28, 148.58) -->
+  <!-- Hmm wait, that's below the outer arc. Let me recalculate. -->
+  <!-- End:    (200 + 80*cos(150°), 200 + 80*sin(150°))  = (200 - 69.28, 200 + 40) = (130.72, 240) -->
+  <!-- Start actual: (200 + 80*0.766, 200 + 80*(-0.643)) = (261.28, 148.58) -->
+  <path d="M 261.28 148.58 A 80 80 0 1 1 130.72 240"
+        stroke="url(#arcG)" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- INNER ARC — R=52, from -30° to 30° clockwise (60° coverage) -->
+  <!-- Start:  (200 + 52*cos(-30°), 200 + 52*sin(-30°))  = (200 + 45.03, 200 - 26) = (245.03, 174) -->
+  <!-- End:    (200 + 52*cos(30°), 200 + 52*sin(30°))    = (200 + 45.03, 200 + 26) = (245.03, 226) -->
+  <path d="M 245.03 174 A 52 52 0 0 1 245.03 226"
+        stroke="url(#arcG)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- SATELLITE DOTS -->
+  <!-- Outer arc endpoints -->
+  <circle cx="237.62" cy="76.63"  r="8" fill="#00E5B0"/>
+  <circle cx="96.63"  cy="162.38" r="7" fill="#00E5B0"/>
+  <!-- Outer extra dot at -55°: (200 + 110*cos(-55°), 200 + 110*sin(-55°)) = (263.09, 109.87) -->
+  <circle cx="263.09" cy="109.87" r="6.5" fill="#00E5B0"/>
+
+  <!-- Middle arc endpoints -->
+  <circle cx="261.28" cy="148.58" r="7" fill="#00E5B0"/>
+  <circle cx="130.72" cy="240"    r="7" fill="#00E5B0"/>
+  <!-- Middle extra dot at 120°: (200 + 80*cos(120°), 200 + 80*sin(120°)) = (160, 269.28) -->
+  <circle cx="160"    cy="269.28" r="6" fill="#00E5B0"/>
+
+  <!-- Inner arc endpoints -->
+  <circle cx="245.03" cy="174"    r="5.5" fill="#00E5B0"/>
+  <circle cx="245.03" cy="226"    r="5.5" fill="#00E5B0"/>
+
+  <!-- WORDMARK -->
+  <text x="200" y="415" text-anchor="middle"
+        font-family="'Space Grotesk', 'Helvetica Neue', Arial, sans-serif"
+        font-size="64" font-weight="500" letter-spacing="7">
+    <tspan fill="url(#aiG)">AI</tspan><tspan fill="#00E5B0">RON</tspan>
+  </text>
+
+  <!-- TAGLINE -->
+  <text x="200" y="460" text-anchor="middle"
+        font-family="'Space Grotesk', 'Helvetica Neue', Arial, sans-serif"
+        font-size="17" font-weight="400" letter-spacing="8" fill="#00E5B0">
+    AI CONTROL TOWER
+  </text>
+</svg>
