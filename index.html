@@ -132,6 +132,22 @@
     }
     html { scroll-behavior: smooth; }
     ::selection { background: rgba(0,229,176,0.3); color: #F8FAFC; }
+
+    /* ---- Light section-break styles (used by Product Preview + Platform sections) ---- */
+    .section-light { background: #F8FAFC; color: #0F1420; }
+    .label-light {
+      font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: #00A886;
+    }
+    .card-light {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px;
+      box-shadow: 0 1px 3px rgba(15,20,32,0.05); transition: all 0.25s ease;
+    }
+    .card-light:hover { border-color: rgba(0,168,134,0.35); box-shadow: 0 10px 28px rgba(15,20,32,0.08); }
+    .mockup-frame {
+      background: #FFFFFF; border-radius: 20px; border: 1px solid #E2E8F0;
+      box-shadow: 0 24px 60px rgba(15,20,32,0.14); overflow: hidden;
+    }
   </style>
 </head>
 
@@ -211,6 +227,118 @@
     </div>
   </section>
 
+  <!-- PRODUCT PREVIEW (light section break) -->
+  <section class="section-light py-24 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <span class="label-light"><span class="accent-line align-middle mr-3"></span>SEE IT IN ACTION</span>
+          <h2 class="font-display font-medium text-3xl md:text-4xl mt-5 mb-6 tracking-tight" style="color:#0F1420;">
+            Everything you need to know about your AI — in one live view.
+          </h2>
+          <p class="leading-relaxed mb-8" style="color:#475569; font-size:17px;">
+            No spreadsheets, no quarterly slide decks. AIRON pulls live data from every
+            AI system in your organization into a single executive dashboard — updated
+            every minute, not every quarter.
+          </p>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div style="width:8px;height:8px;border-radius:50%;background:#00E5B0;margin-top:8px;flex-shrink:0;"></div>
+              <div>
+                <div style="font-weight:600;color:#0F1420;">AI Intelligence Score</div>
+                <div style="color:#64748B;font-size:15px;">A single composite number the Board actually understands.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div style="width:8px;height:8px;border-radius:50%;background:#00E5B0;margin-top:8px;flex-shrink:0;"></div>
+              <div>
+                <div style="font-weight:600;color:#0F1420;">Live cost &amp; ROI tracking</div>
+                <div style="color:#64748B;font-size:15px;">See exactly where LLM spend goes — and what it's worth.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div style="width:8px;height:8px;border-radius:50%;background:#00E5B0;margin-top:8px;flex-shrink:0;"></div>
+              <div>
+                <div style="font-weight:600;color:#0F1420;">Real-time system status</div>
+                <div style="color:#64748B;font-size:15px;">Every AI system, its owner and its compliance state — always current.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-frame">
+          <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;">
+            <rect width="800" height="460" fill="#FFFFFF"/>
+            <!-- header -->
+            <circle cx="28" cy="28" r="6" fill="#E2E8F0"/>
+            <circle cx="48" cy="28" r="6" fill="#E2E8F0"/>
+            <circle cx="68" cy="28" r="6" fill="#E2E8F0"/>
+            <text x="100" y="34" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#0F1420">AIRON — Board Center</text>
+            <rect x="672" y="14" width="104" height="28" rx="14" fill="rgba(0,229,176,0.10)" stroke="#00A886" stroke-width="1"/>
+            <circle cx="690" cy="28" r="4" fill="#00E5B0"/>
+            <text x="702" y="32" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#00A886">LIVE</text>
+            <line x1="24" y1="58" x2="776" y2="58" stroke="#E2E8F0" stroke-width="1.5"/>
+
+            <!-- column A: gauge -->
+            <text x="24" y="96" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="#64748B">AI INTELLIGENCE SCORE</text>
+            <circle cx="134" cy="210" r="64" stroke="#E2E8F0" stroke-width="14" fill="none"/>
+            <circle cx="134" cy="210" r="64" stroke="#00E5B0" stroke-width="14" fill="none" stroke-linecap="round"
+                    stroke-dasharray="349.9 52.3" transform="rotate(-90 134 210)"/>
+            <text x="134" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#0F1420">87</text>
+            <text x="134" y="226" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#64748B">/ 100</text>
+            <text x="134" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#00A886">▲ +4 vs last quarter</text>
+
+            <!-- column B: bar chart -->
+            <text x="268" y="96" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="#64748B">LLM COST — 6 MONTHS</text>
+            <text x="508" y="96" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#00A886">-34%</text>
+            <rect x="268" y="146" width="28" height="128" rx="4" fill="#D6DEE8"/>
+            <rect x="306" y="162" width="28" height="112" rx="4" fill="#C3D9D0"/>
+            <rect x="344" y="176" width="28" height="98"  rx="4" fill="#9FDDC4"/>
+            <rect x="382" y="192" width="28" height="82"  rx="4" fill="#6FE0B9"/>
+            <rect x="420" y="208" width="28" height="66"  rx="4" fill="#3AE0AE"/>
+            <rect x="458" y="224" width="28" height="50"  rx="4" fill="#00D6A0"/>
+            <text x="282" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">M1</text>
+            <text x="320" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">M2</text>
+            <text x="358" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">M3</text>
+            <text x="396" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">M4</text>
+            <text x="434" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">M5</text>
+            <text x="472" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">M6</text>
+
+            <!-- column C: systems list -->
+            <text x="532" y="96" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="#64748B">AI SYSTEMS — LIVE STATUS</text>
+            <rect x="532" y="112" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="130" r="5" fill="#00E5B0"/>
+            <text x="564" y="135" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">Copilot — Sales</text>
+            <text x="764" y="135" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#00A886">Compliant</text>
+            <rect x="532" y="160" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="178" r="5" fill="#F59E0B"/>
+            <text x="564" y="183" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">Custom LLM — Support</text>
+            <text x="764" y="183" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#D97706">Review</text>
+            <rect x="532" y="208" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="226" r="5" fill="#00E5B0"/>
+            <text x="564" y="231" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">Fraud Scoring Model</text>
+            <text x="764" y="231" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#00A886">Compliant</text>
+            <rect x="532" y="256" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="274" r="5" fill="#B083FF"/>
+            <text x="564" y="279" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">HR Screening Tool</text>
+            <text x="764" y="279" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#7C5CFC">In Progress</text>
+
+            <!-- bottom KPI strip -->
+            <line x1="24" y1="400" x2="776" y2="400" stroke="#E2E8F0" stroke-width="1.5"/>
+            <text x="118" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0F1420">42</text>
+            <text x="118" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">SYSTEMS TRACKED</text>
+            <text x="306" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0F1420">38</text>
+            <text x="306" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">COMPLIANT</text>
+            <text x="494" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#D97706">3</text>
+            <text x="494" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">OPEN RISKS</text>
+            <text x="682" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#00A886">91%</text>
+            <text x="682" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">AUDIT-READY</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROBLEM -->
   <section class="py-32 border-t border-border/50">
     <div class="max-w-5xl mx-auto px-6">
@@ -245,48 +373,98 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section id="features" class="py-32 border-t border-border/50">
+  <!-- FEATURES (light section break) -->
+  <section id="features" class="section-light py-24 md:py-28">
     <div class="max-w-6xl mx-auto px-6">
-      <span class="label"><span class="accent-line align-middle mr-3"></span>THE PLATFORM</span>
-      <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-8 tracking-tight max-w-3xl">
-        Six centers, one platform.
-      </h2>
-      <p class="text-lg text-muted max-w-2xl leading-relaxed mb-16">
-        Every executive role gets its own dashboard. The CEO sees the overview,
-        the DPO gets detailed compliance data, the CFO sees cost and ROI.
-      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-16">
+        <div>
+          <span class="label-light"><span class="accent-line align-middle mr-3"></span>THE PLATFORM</span>
+          <h2 class="font-display font-medium text-3xl md:text-4xl mt-5 mb-6 tracking-tight" style="color:#0F1420;">
+            Six centers, one platform.
+          </h2>
+          <p class="leading-relaxed" style="color:#475569; font-size:17px;">
+            Every executive role gets its own dashboard. The CEO sees the overview,
+            the DPO gets detailed compliance data, the CFO sees cost and ROI —
+            all pulling from the same live data.
+          </p>
+        </div>
+        <div class="flex justify-center">
+          <svg viewBox="0 0 400 430" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:360px; height:auto;">
+            <!-- connector lines -->
+            <line x1="200" y1="210" x2="200" y2="65"    stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="325.6" y2="137.5" stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="325.6" y2="282.5" stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="200" y2="355"    stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="74.4" y2="282.5" stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="74.4" y2="137.5" stroke="#E2E8F0" stroke-width="2.5"/>
+
+            <!-- center node -->
+            <circle cx="200" cy="210" r="56" fill="#0F1420"/>
+            <text x="200" y="217" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="1" fill="#F8FAFC">AIRON</text>
+
+            <!-- satellite: Board Center (top) -->
+            <circle cx="200" cy="65" r="34" fill="#FFFFFF" stroke="#00A886" stroke-width="2.5"/>
+            <text x="200" y="74" text-anchor="middle" font-size="20" fill="#00A886">◈</text>
+            <text x="200" y="111" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Board</text>
+
+            <!-- satellite: Operations Center (upper right) -->
+            <circle cx="325.6" cy="137.5" r="34" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="2.5"/>
+            <text x="325.6" y="146.5" text-anchor="middle" font-size="20" fill="#7C5CFC">◉</text>
+            <text x="325.6" y="183.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Operations</text>
+
+            <!-- satellite: AI Lifecycle (lower right) -->
+            <circle cx="325.6" cy="282.5" r="34" fill="#FFFFFF" stroke="#00A886" stroke-width="2.5"/>
+            <text x="325.6" y="291.5" text-anchor="middle" font-size="20" fill="#00A886">◇</text>
+            <text x="325.6" y="328.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Lifecycle</text>
+
+            <!-- satellite: Compliance Center (bottom) -->
+            <circle cx="200" cy="355" r="34" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="2.5"/>
+            <text x="200" y="364" text-anchor="middle" font-size="20" fill="#7C5CFC">◻</text>
+            <text x="200" y="401" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Compliance</text>
+
+            <!-- satellite: Financial Center (lower left) -->
+            <circle cx="74.4" cy="282.5" r="34" fill="#FFFFFF" stroke="#00A886" stroke-width="2.5"/>
+            <text x="74.4" y="291.5" text-anchor="middle" font-size="20" fill="#00A886">§</text>
+            <text x="74.4" y="328.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Financial</text>
+
+            <!-- satellite: Admin & Ecosystem (upper left) -->
+            <circle cx="74.4" cy="137.5" r="34" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="2.5"/>
+            <text x="74.4" y="146.5" text-anchor="middle" font-size="20" fill="#7C5CFC">⚙</text>
+            <text x="74.4" y="183.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Admin</text>
+          </svg>
+        </div>
+      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card p-6">
-          <div class="text-teal text-2xl mb-3">◈</div>
-          <div class="font-display text-xl font-medium mb-2">Board Center</div>
-          <p class="text-muted text-sm leading-relaxed">Live executive dashboard. <span class="text-teal">Real-time</span> AI Intelligence Score, Maturity Curve, instant insights.</p>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◈</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Board Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">Live executive dashboard. <span style="color:#00A886; font-weight:600;">Real-time</span> AI Intelligence Score, Maturity Curve, instant insights.</p>
         </div>
-        <div class="card p-6">
-          <div class="text-teal text-2xl mb-3">◉</div>
-          <div class="font-display text-xl font-medium mb-2">Operations Center</div>
-          <p class="text-muted text-sm leading-relaxed">Daily operations with <span class="text-teal">real-time</span> alerts. Action Center, incident lifecycle, approval workflow, audit log.</p>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◉</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Operations Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">Daily operations with <span style="color:#00A886; font-weight:600;">real-time</span> alerts. Action Center, incident lifecycle, approval workflow, audit log.</p>
         </div>
-        <div class="card p-6">
-          <div class="text-teal text-2xl mb-3">◇</div>
-          <div class="font-display text-xl font-medium mb-2">AI Lifecycle</div>
-          <p class="text-muted text-sm leading-relaxed">New AI onboarding. Classification wizard AI-prefill, RMS AI-bootstrap, ModelOps.</p>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◇</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">AI Lifecycle</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">New AI onboarding. Classification wizard AI-prefill, RMS AI-bootstrap, ModelOps.</p>
         </div>
-        <div class="card p-6">
-          <div class="text-teal text-2xl mb-3">◻</div>
-          <div class="font-display text-xl font-medium mb-2">Compliance Center</div>
-          <p class="text-muted text-sm leading-relaxed">EU AI Act + GDPR + DORA + NIS2 + CSRD. FRIA, RMS, Audit Readiness, Insurance Bridge.</p>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◻</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Compliance Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">EU AI Act + GDPR + DORA + NIS2 + CSRD. FRIA, RMS, Audit Readiness, Insurance Bridge.</p>
         </div>
-        <div class="card p-6">
-          <div class="text-teal text-2xl mb-3">§</div>
-          <div class="font-display text-xl font-medium mb-2">Financial Center</div>
-          <p class="text-muted text-sm leading-relaxed">LLM cost tracker, ROI per system, spend optimizer, Sustainability (CSRD ESRS E1).</p>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">§</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Financial Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">LLM cost tracker, ROI per system, spend optimizer, Sustainability (CSRD ESRS E1).</p>
         </div>
-        <div class="card p-6">
-          <div class="text-teal text-2xl mb-3">⚙</div>
-          <div class="font-display text-xl font-medium mb-2">Admin & Ecosystem</div>
-          <p class="text-muted text-sm leading-relaxed">Tenant, connectors, security. IAM (AWS/Azure/GCP), SSO, MFA, Drift Detector.</p>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">⚙</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Admin &amp; Ecosystem</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">Tenant, connectors, security. IAM (AWS/Azure/GCP), SSO, MFA, Drift Detector.</p>
         </div>
       </div>
     </div>
