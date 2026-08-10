@@ -1,1 +1,793 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIRON — AI Control Tower · Enterprise AI Governance</title>
+  <meta name="description" content="Az AIRON egy AI governance platform — átláthatóvá, mérhetővé, auditálhatóvá és irányíthatóvá teszi a vállalati AI rendszerek működését. EU AI Act ready.">
+  <meta name="keywords" content="AI governance, EU AI Act, AI compliance, AI Control Tower, AIRON, Fortytech, mesterséges intelligencia">
+  <meta name="author" content="Fortytech Kft.">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AIRON — AI Control Tower">
+  <meta property="og:description" content="Enterprise AI governance platform — átlátható, mérhető, auditálható, irányítható.">
+  <meta property="og:image" content="../og-image.png">
+  <meta property="og:locale" content="hu_HU">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Language alternate -->
+  <link rel="alternate" hreflang="hu" href="/hu/">
+  <link rel="alternate" hreflang="en" href="/">
+  <link rel="alternate" hreflang="x-default" href="/">
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0F1420',
+            bg2: '#161B2A',
+            surface: 'rgba(255,255,255,0.02)',
+            border: 'rgba(255,255,255,0.06)',
+            borderHover: 'rgba(0,229,176,0.35)',
+            text: '#F8FAFC',
+            muted: '#94A3B8',
+            dim: '#64748B',
+            teal: '#00E5B0',
+            tealBright: '#5FFCD8',
+            tealDim: '#00A886',
+            purple: '#B083FF',
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background: #0F1420; color: #F8FAFC; font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500;
+             letter-spacing: 0.22em; text-transform: uppercase; color: #64748B; }
+    .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; transition: all 0.3s ease; }
+    .card:hover { border-color: rgba(0,229,176,0.35); background: rgba(0,229,176,0.03); }
+    .glow-teal { text-shadow: 0 0 30px rgba(0,229,176,0.3); }
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .bg-radial {
+      background: radial-gradient(circle at 50% 30%, rgba(0,229,176,0.10), transparent 60%);
+    }
+    /* Aurora background — soft, subtle animated glow behind hero (Safari-safe: only transform+opacity animated, no opacity:0 start-state) */
+    .aurora {
+      position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+      z-index: 0;
+    }
+    .aurora::before, .aurora::after, .aurora > span {
+      content: ""; position: absolute; border-radius: 50%; filter: blur(80px);
+      opacity: 0.55; will-change: transform;
+    }
+    .aurora::before {
+      width: 620px; height: 620px; top: -120px; left: 8%;
+      background: radial-gradient(circle, rgba(0,229,176,0.55) 0%, rgba(0,229,176,0) 65%);
+      animation: aurora-drift-a 18s ease-in-out infinite alternate;
+    }
+    .aurora::after {
+      width: 720px; height: 720px; top: 40px; right: 4%;
+      background: radial-gradient(circle, rgba(176,131,255,0.50) 0%, rgba(176,131,255,0) 65%);
+      animation: aurora-drift-b 22s ease-in-out infinite alternate;
+    }
+    .aurora > span {
+      width: 500px; height: 500px; bottom: -140px; left: 42%;
+      background: radial-gradient(circle, rgba(95,252,216,0.40) 0%, rgba(95,252,216,0) 65%);
+      animation: aurora-drift-c 26s ease-in-out infinite alternate;
+    }
+    @keyframes aurora-drift-a {
+      0%   { transform: translate(0, 0)      scale(1); }
+      100% { transform: translate(80px, 60px) scale(1.15); }
+    }
+    @keyframes aurora-drift-b {
+      0%   { transform: translate(0, 0)       scale(1); }
+      100% { transform: translate(-70px, 40px) scale(1.12); }
+    }
+    @keyframes aurora-drift-c {
+      0%   { transform: translate(0, 0)       scale(1); }
+      100% { transform: translate(-60px, -50px) scale(1.10); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .aurora::before, .aurora::after, .aurora > span { animation: none; }
+    }
+    /* Hero logo — responsive negative margins to compensate for SVG viewBox whitespace */
+    .hero-logo {
+      display: block;
+      margin: -120px auto -160px auto;
+      width: 100%;
+      max-width: 960px;
+      height: auto;
+    }
+    /* Hero enterprise badge — responsive */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 10px 22px; border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(176,131,255,0.10), rgba(0,229,176,0.10));
+      border: 1px solid rgba(0,229,176,0.35);
+      box-shadow: 0 0 30px rgba(0,229,176,0.15);
+      max-width: 100%;
+    }
+    .hero-badge-line { display: inline-block; width: 30px; height: 2px; border-radius: 2px;
+                       background: linear-gradient(90deg, #B083FF, #00E5B0); flex-shrink: 0; }
+    .hero-badge-text { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600;
+                       letter-spacing: 0.28em; text-transform: uppercase; color: #F8FAFC; }
+    @media (max-width: 768px) {
+      .hero-logo { margin: -30px auto -40px auto; }
+      .hero-badge { gap: 8px; padding: 8px 14px; }
+      .hero-badge-line { width: 18px; }
+      .hero-badge-text { font-size: 10px; letter-spacing: 0.18em; }
+      /* Aurora blobs shrink on mobile so they don't cause layout jitter */
+      .aurora::before { width: 300px; height: 300px; }
+      .aurora::after  { width: 320px; height: 320px; }
+      .aurora > span  { width: 240px; height: 240px; }
+    }
+    /* No opacity:0 anywhere — avoids Safari stuck-hidden bug from earlier versions */
+    .btn-primary {
+      background: linear-gradient(135deg, #00E5B0 0%, #00A886 100%);
+      color: #0F1420; font-weight: 600; padding: 14px 32px; border-radius: 8px;
+      transition: all 0.25s ease; display: inline-block; letter-spacing: 0.02em;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,229,176,0.4); }
+    .btn-ghost {
+      background: transparent; color: #F8FAFC; font-weight: 500; padding: 14px 32px;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.14);
+      transition: all 0.25s ease; display: inline-block; letter-spacing: 0.02em;
+    }
+    .btn-ghost:hover { border-color: #00E5B0; color: #00E5B0; }
+    .accent-line {
+      display: inline-block; width: 40px; height: 2px;
+      background: linear-gradient(90deg, #B083FF, #00E5B0);
+      border-radius: 2px;
+    }
+    html { scroll-behavior: smooth; }
+    ::selection { background: rgba(0,229,176,0.3); color: #F8FAFC; }
+
+    /* ---- Light section-break styles (used by Product Preview + Platform sections) ---- */
+    .section-light { background: #F8FAFC; color: #0F1420; }
+    .label-light {
+      font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: #00A886;
+    }
+    .card-light {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px;
+      box-shadow: 0 1px 3px rgba(15,20,32,0.05); transition: all 0.25s ease;
+    }
+    .card-light:hover { border-color: rgba(0,168,134,0.35); box-shadow: 0 10px 28px rgba(15,20,32,0.08); }
+    .mockup-frame {
+      background: #FFFFFF; border-radius: 20px; border: 1px solid #E2E8F0;
+      box-shadow: 0 24px 60px rgba(15,20,32,0.14); overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- NAV -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-lg bg-bg/70 border-b border-border">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <svg viewBox="0 0 32 32" class="w-8 h-8">
+          <path d="M 20.10 4.72 A 12 12 0 1 1 4.72 11.90" stroke="#00E5B0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M 22.64 10.43 A 8.7 8.7 0 1 1 8.49 20.33" stroke="#00E5B0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <circle cx="20.10" cy="4.72" r="1.7" fill="#00E5B0"/>
+          <circle cx="4.72" cy="11.90" r="1.5" fill="#00E5B0"/>
+          <circle cx="22.64" cy="10.43" r="1.4" fill="#00E5B0"/>
+          <circle cx="8.49" cy="20.33" r="1.4" fill="#00E5B0"/>
+        </svg>
+        <span class="font-display font-medium text-lg tracking-widest">
+          <span class="text-purple">AI</span><span class="text-teal">RON</span>
+        </span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-muted">
+        <a href="#features" class="hover:text-teal transition">Platform</a>
+        <a href="#features" class="hover:text-teal transition">Funkciók</a>
+        <a href="#pilot" class="hover:text-teal transition">Pilot</a>
+        <a href="#pricing" class="hover:text-teal transition">Csomagok</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-teal font-medium">HU</span>
+          <span class="text-dim">·</span>
+          <a href="../" class="text-muted hover:text-teal transition">EN</a>
+        </div>
+        <a href="#pilot" class="btn-primary text-sm !py-2 !px-5">Kérj ajánlatot</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- HERO -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section id="top" class="relative overflow-hidden bg-grid pt-16 pb-12 md:pt-16 md:pb-16">
+    <div class="absolute inset-0 bg-radial"></div>
+    <!-- Aurora animated background -->
+    <div class="aurora"><span></span></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto text-center px-6" style="opacity: 1;">
+      <!-- Official AIRON logo — responsive negative margins (see .hero-logo CSS) -->
+      <img src="../AIRON2026.svg" alt="AIRON — AI Control Tower" class="hero-logo">
+
+      <!-- Enterprise tagline — emphasized badge (responsive via .hero-badge CSS) -->
+      <div class="hero-badge">
+        <span class="hero-badge-line"></span>
+        <span class="hero-badge-text">
+          Enterprise <span style="color:#00E5B0;">AI Governance</span> Platform
+        </span>
+      </div>
+
+      <h1 class="font-display font-medium text-4xl md:text-6xl lg:text-7xl leading-[1.1] mt-3 mb-6 tracking-tight" style="color: #F8FAFC;">
+        Ne engedd, hogy az AI<br>
+        <span style="color: #00E5B0; text-shadow: 0 0 30px rgba(0,229,176,0.3);">ellenőrizetlenül fusson.</span>
+      </h1>
+
+      <p class="text-base md:text-lg max-w-2xl mx-auto mb-6 leading-relaxed" style="color: #94A3B8;">
+        Az AIRON egy AI governance platform — <span style="color: #00E5B0; font-weight: 500;">valós idejű</span>
+        adatokkal teszi <span style="color:#F8FAFC; font-weight:500;">átláthatóvá, mérhetővé, auditálhatóvá és irányíthatóvá</span>
+        minden vállalati AI rendszered működését.
+      </p>
+
+      <!-- Real-time badge -->
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; margin-bottom: 40px; border-radius: 9999px; background: rgba(0,229,176,0.10); border: 1px solid rgba(0,229,176,0.30);">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #00E5B0;"></span>
+        <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #00E5B0;">LIVE · 24/7 · Nincs negyedéves riport</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="mailto:info@fortytech.hu?subject=AIRON%20-%20Discovery%20meeting" class="btn-primary">Kérj Discovery meeting-et →</a>
+        <a href="#features" class="btn-ghost">Nézd meg működés közben</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PRODUCT PREVIEW (light section break) -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="section-light py-24 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <span class="label-light"><span class="accent-line align-middle mr-3"></span>ÉLESBEN</span>
+          <h2 class="font-display font-medium text-3xl md:text-4xl mt-5 mb-6 tracking-tight" style="color:#0F1420;">
+            Minden, amit a vállalati AI-ról tudnod kell — egy élő nézetben.
+          </h2>
+          <p class="leading-relaxed mb-8" style="color:#475569; font-size:17px;">
+            Nincs Excel, nincs negyedéves prezentáció. Az AIRON minden AI rendszerből
+            élő adatot húz be egyetlen vezetői dashboard-ba — percenként frissül,
+            nem negyedévente.
+          </p>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div style="width:8px;height:8px;border-radius:50%;background:#00E5B0;margin-top:8px;flex-shrink:0;"></div>
+              <div>
+                <div style="font-weight:600;color:#0F1420;">AI Intelligence Score</div>
+                <div style="color:#64748B;font-size:15px;">Egyetlen összetett szám, amit a Board is azonnal ért.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div style="width:8px;height:8px;border-radius:50%;background:#00E5B0;margin-top:8px;flex-shrink:0;"></div>
+              <div>
+                <div style="font-weight:600;color:#0F1420;">Élő költség- és ROI-követés</div>
+                <div style="color:#64748B;font-size:15px;">Pontosan látod, hova megy az LLM-költés — és mit ér.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div style="width:8px;height:8px;border-radius:50%;background:#00E5B0;margin-top:8px;flex-shrink:0;"></div>
+              <div>
+                <div style="font-weight:600;color:#0F1420;">Valós idejű rendszer-státusz</div>
+                <div style="color:#64748B;font-size:15px;">Minden AI rendszer, felelőse és compliance-állapota — mindig naprakész.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-frame">
+          <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;">
+            <rect width="800" height="460" fill="#FFFFFF"/>
+            <!-- header -->
+            <circle cx="28" cy="28" r="6" fill="#E2E8F0"/>
+            <circle cx="48" cy="28" r="6" fill="#E2E8F0"/>
+            <circle cx="68" cy="28" r="6" fill="#E2E8F0"/>
+            <text x="100" y="34" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#0F1420">AIRON — Board Center</text>
+            <rect x="672" y="14" width="104" height="28" rx="14" fill="rgba(0,229,176,0.10)" stroke="#00A886" stroke-width="1"/>
+            <circle cx="690" cy="28" r="4" fill="#00E5B0"/>
+            <text x="702" y="32" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#00A886">LIVE</text>
+            <line x1="24" y1="58" x2="776" y2="58" stroke="#E2E8F0" stroke-width="1.5"/>
+
+            <!-- column A: gauge -->
+            <text x="24" y="96" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="#64748B">AI INTELLIGENCIA PONTSZÁM</text>
+            <circle cx="134" cy="210" r="64" stroke="#E2E8F0" stroke-width="14" fill="none"/>
+            <circle cx="134" cy="210" r="64" stroke="#00E5B0" stroke-width="14" fill="none" stroke-linecap="round"
+                    stroke-dasharray="349.9 52.3" transform="rotate(-90 134 210)"/>
+            <text x="134" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#0F1420">87</text>
+            <text x="134" y="226" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#64748B">/ 100</text>
+            <text x="134" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#00A886">▲ +4 az előző negyedévhez</text>
+
+            <!-- column B: bar chart -->
+            <text x="268" y="96" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="#64748B">LLM KÖLTSÉG — 6 HÓNAP</text>
+            <text x="508" y="96" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#00A886">-34%</text>
+            <rect x="268" y="146" width="28" height="128" rx="4" fill="#D6DEE8"/>
+            <rect x="306" y="162" width="28" height="112" rx="4" fill="#C3D9D0"/>
+            <rect x="344" y="176" width="28" height="98"  rx="4" fill="#9FDDC4"/>
+            <rect x="382" y="192" width="28" height="82"  rx="4" fill="#6FE0B9"/>
+            <rect x="420" y="208" width="28" height="66"  rx="4" fill="#3AE0AE"/>
+            <rect x="458" y="224" width="28" height="50"  rx="4" fill="#00D6A0"/>
+            <text x="282" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">H1</text>
+            <text x="320" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">H2</text>
+            <text x="358" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">H3</text>
+            <text x="396" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">H4</text>
+            <text x="434" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">H5</text>
+            <text x="472" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94A3B8">H6</text>
+
+            <!-- column C: systems list -->
+            <text x="532" y="96" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="#64748B">AI RENDSZEREK — ÉLŐ ÁLLAPOT</text>
+            <rect x="532" y="112" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="130" r="5" fill="#00E5B0"/>
+            <text x="564" y="135" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">Copilot — Sales</text>
+            <text x="764" y="135" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#00A886">Megfelelő</text>
+            <rect x="532" y="160" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="178" r="5" fill="#F59E0B"/>
+            <text x="564" y="183" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">Custom LLM — Support</text>
+            <text x="764" y="183" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#D97706">Felülvizsg.</text>
+            <rect x="532" y="208" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="226" r="5" fill="#00E5B0"/>
+            <text x="564" y="231" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">Fraud Scoring Model</text>
+            <text x="764" y="231" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#00A886">Megfelelő</text>
+            <rect x="532" y="256" width="244" height="36" rx="8" fill="#F8FAFC" stroke="#EEF2F6"/>
+            <circle cx="548" cy="274" r="5" fill="#B083FF"/>
+            <text x="564" y="279" font-family="Arial, sans-serif" font-size="12.5" font-weight="600" fill="#0F1420">HR Screening Tool</text>
+            <text x="764" y="279" text-anchor="end" font-family="Arial, sans-serif" font-size="10.5" font-weight="700" fill="#7C5CFC">Folyamatban</text>
+
+            <!-- bottom KPI strip -->
+            <line x1="24" y1="400" x2="776" y2="400" stroke="#E2E8F0" stroke-width="1.5"/>
+            <text x="118" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0F1420">42</text>
+            <text x="118" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">RENDSZER NYOMON KÖVETVE</text>
+            <text x="306" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#0F1420">38</text>
+            <text x="306" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">MEGFELELŐ</text>
+            <text x="494" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#D97706">3</text>
+            <text x="494" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">NYITOTT KOCKÁZAT</text>
+            <text x="682" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#00A886">91%</text>
+            <text x="682" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1" fill="#64748B">AUDIT-READY</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PROBLEM -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-32 border-t border-border/50">
+    <div class="max-w-5xl mx-auto px-6">
+      <span class="label"><span class="accent-line align-middle mr-3"></span>A PROBLÉMA</span>
+      <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-8 tracking-tight max-w-3xl">
+        Az AI gyorsabban terjed a szervezetekben,<br>
+        mint a hozzá tartozó kontroll.
+      </h2>
+      <p class="text-lg text-muted max-w-2xl leading-relaxed mb-16">
+        A legtöbb szervezet csak akkor veszi észre az AI-kockázatot, amikor már bekövetkezett.
+        A shadow AI, a nem-dokumentált modellek és a hiányzó jogosultság-kontroll együtt
+        évi 5-50 millió eurós kockázati kitettséget jelentenek.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">Nem tudod hány AI-t használsz</div>
+          <p class="text-muted leading-relaxed">Az alkalmazottak Copilot-ot, ChatGPT-t, Grammarly-t használnak — a legtöbb esetben regisztráció + jóváhagyás nélkül.</p>
+        </div>
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">Nem tudod ki felelős értük</div>
+          <p class="text-muted leading-relaxed">EU AI Act szerint MINDEN high-risk AI-hoz kell egy személyes tulajdonos. Ha nincs név — bírságkockázat.</p>
+        </div>
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">Nem tudod hova sodródik</div>
+          <p class="text-muted leading-relaxed">Silent model drift, bias-alakulás, jogosultság-túllépés — észrevétlenül épülnek fel hónapokon keresztül.</p>
+        </div>
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">Nincs mérhető ROI</div>
+          <p class="text-muted leading-relaxed">Az AI-cost tervezhetetlen, az érték-visszamérés esetleges. A Board nem tudja: megéri-e?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- FEATURES — 6 Center (light section break) -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section id="features" class="section-light py-24 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-16">
+        <div>
+          <span class="label-light"><span class="accent-line align-middle mr-3"></span>A PLATFORM</span>
+          <h2 class="font-display font-medium text-3xl md:text-4xl mt-5 mb-6 tracking-tight" style="color:#0F1420;">
+            6 központ, egy platform.
+          </h2>
+          <p class="leading-relaxed" style="color:#475569; font-size:17px;">
+            Minden vezetői szerepkörnek a saját dashboard-ja. A CEO átfogó képet lát,
+            a DPO részletes compliance-adatot, a CFO költség- és ROI-adatokat —
+            mind ugyanabból az élő adatból.
+          </p>
+        </div>
+        <div class="flex justify-center">
+          <svg viewBox="0 0 400 430" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:360px; height:auto;">
+            <!-- connector lines -->
+            <line x1="200" y1="210" x2="200" y2="65"    stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="325.6" y2="137.5" stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="325.6" y2="282.5" stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="200" y2="355"    stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="74.4" y2="282.5" stroke="#E2E8F0" stroke-width="2.5"/>
+            <line x1="200" y1="210" x2="74.4" y2="137.5" stroke="#E2E8F0" stroke-width="2.5"/>
+
+            <!-- center node -->
+            <circle cx="200" cy="210" r="56" fill="#0F1420"/>
+            <text x="200" y="217" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="1" fill="#F8FAFC">AIRON</text>
+
+            <!-- satellite: Board Center (top) -->
+            <circle cx="200" cy="65" r="34" fill="#FFFFFF" stroke="#00A886" stroke-width="2.5"/>
+            <text x="200" y="74" text-anchor="middle" font-size="20" fill="#00A886">◈</text>
+            <text x="200" y="111" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Board</text>
+
+            <!-- satellite: Operations Center (upper right) -->
+            <circle cx="325.6" cy="137.5" r="34" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="2.5"/>
+            <text x="325.6" y="146.5" text-anchor="middle" font-size="20" fill="#7C5CFC">◉</text>
+            <text x="325.6" y="183.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Operations</text>
+
+            <!-- satellite: AI Lifecycle (lower right) -->
+            <circle cx="325.6" cy="282.5" r="34" fill="#FFFFFF" stroke="#00A886" stroke-width="2.5"/>
+            <text x="325.6" y="291.5" text-anchor="middle" font-size="20" fill="#00A886">◇</text>
+            <text x="325.6" y="328.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Lifecycle</text>
+
+            <!-- satellite: Compliance Center (bottom) -->
+            <circle cx="200" cy="355" r="34" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="2.5"/>
+            <text x="200" y="364" text-anchor="middle" font-size="20" fill="#7C5CFC">◻</text>
+            <text x="200" y="401" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Compliance</text>
+
+            <!-- satellite: Financial Center (lower left) -->
+            <circle cx="74.4" cy="282.5" r="34" fill="#FFFFFF" stroke="#00A886" stroke-width="2.5"/>
+            <text x="74.4" y="291.5" text-anchor="middle" font-size="20" fill="#00A886">§</text>
+            <text x="74.4" y="328.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Financial</text>
+
+            <!-- satellite: Admin & Ecosystem (upper left) -->
+            <circle cx="74.4" cy="137.5" r="34" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="2.5"/>
+            <text x="74.4" y="146.5" text-anchor="middle" font-size="20" fill="#7C5CFC">⚙</text>
+            <text x="74.4" y="183.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="12.5" font-weight="700" fill="#475569">Admin</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◈</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Board Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">Élő executive dashboard. <span style="color:#00A886; font-weight:600;">Real-time</span> AI Intelligence Score, Maturity Curve, azonnali insight-ok.</p>
+        </div>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◉</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Operations Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">Napi rutin <span style="color:#00A886; font-weight:600;">real-time</span> alertekkel. Action Center, incident lifecycle, approval workflow, audit napló.</p>
+        </div>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◇</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">AI Lifecycle</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">Új AI bevezetés. Classification wizard AI-prefill, RMS AI-bootstrap, ModelOps.</p>
+        </div>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">◻</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Compliance Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">EU AI Act + GDPR + DORA + NIS2 + CSRD. FRIA, RMS, Audit Readiness, Insurance Bridge.</p>
+        </div>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">§</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Financial Center</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">LLM cost tracker, ROI per system, spend optimizer, Sustainability (CSRD ESRS E1).</p>
+        </div>
+        <div class="card-light p-6">
+          <div style="color:#00A886; font-size:22px;" class="mb-3">⚙</div>
+          <div class="font-display text-xl font-medium mb-2" style="color:#0F1420;">Admin &amp; Ecosystem</div>
+          <p class="text-sm leading-relaxed" style="color:#64748B;">Tenant, connectorok, security. IAM (AWS/Azure/GCP), SSO, MFA, Drift Detector.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- VALUE PILLARS -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-32 border-t border-border/50 bg-bg2/30">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <span class="label"><span class="accent-line align-middle mr-3"></span>ÉRTÉKÍGÉRET</span>
+      <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-16 tracking-tight">
+        Négy érték, egy platform.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">01</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">ÁTLÁTHATÓ</div>
+          <p class="text-muted leading-relaxed">Minden AI-eszköz + owner + kockázat egy nézetben. Nincs shadow AI.</p>
+        </div>
+        <div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">02</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">MÉRHETŐ</div>
+          <p class="text-muted leading-relaxed">Valós idejű költség, ROI, teljesítmény és karbonlábnyom — rendszer-szintig lebontva.</p>
+        </div>
+        <div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">03</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">AUDITÁLHATÓ</div>
+          <p class="text-muted leading-relaxed">EU AI Act, GDPR, DORA, NIS2 evidence pack — egy kattintással exportálható.</p>
+        </div>
+        <div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">04</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">IRÁNYÍTHATÓ</div>
+          <p class="text-muted leading-relaxed">Policy-k, jogosultságok, phase gate-ek és drift-riasztás. Nem csak látod — beavatkozol.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- STATS BAR -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-24 border-t border-border/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-medium" style="color:#00E5B0;">24/7</div>
+          <div class="label mt-2">VALÓS IDEJŰ MONITORING</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-medium" style="color:#00E5B0;">0</div>
+          <div class="label mt-2">NEM FELTÉRKÉPEZETT AI</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-medium" style="color:#00E5B0;">€35M</div>
+          <div class="label mt-2">MAX EU AI ACT BÍRSÁG</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-medium" style="color:#00E5B0;">2027</div>
+          <div class="label mt-2">KÖTELEZŐ AUDIT-READY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PILOT -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section id="pilot" class="py-32 border-t border-border/50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <span class="label"><span class="accent-line align-middle mr-3"></span>ELSŐ LÉPÉS</span>
+      <h2 class="font-display font-medium text-4xl md:text-6xl mt-6 mb-6 tracking-tight">
+        Kezdd egy <span class="text-teal glow-teal">élő demo-val.</span>
+      </h2>
+      <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-14 leading-relaxed">
+        30 perces élő bemutató a Fortytech csapattal. Nézd meg valós adatokon, hogyan működik az AIRON.
+        Utána eldöntöd — sztenderd csomag vagy Discovery meeting alapján személyre szabott.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        <div class="card p-6 text-left">
+          <div class="text-teal font-display text-sm tracking-widest mb-2">01 DEMO</div>
+          <div class="font-medium mb-2">30 perces bemutató</div>
+          <p class="text-muted text-sm">Élő platform-túra, kérdés-válasz, a te kontextusodra fókuszált use case.</p>
+        </div>
+        <div class="card p-6 text-left">
+          <div class="text-teal font-display text-sm tracking-widest mb-2">02 DISCOVERY</div>
+          <div class="font-medium mb-2">Igényfelmérés</div>
+          <p class="text-muted text-sm">AI rendszereid, governance-célok, compliance-elvárások — feltérképezzük a legrövidebb utat.</p>
+        </div>
+        <div class="card p-6 text-left">
+          <div class="text-teal font-display text-sm tracking-widest mb-2">03 INDULÁS</div>
+          <div class="font-medium mb-2">Csomag vagy egyedi</div>
+          <p class="text-muted text-sm">Sztenderd csomag (Starter / Standard / Enterprise) VAGY Discovery-alapú, teljes egyediségű indulás.</p>
+        </div>
+      </div>
+
+      <a href="mailto:info@fortytech.hu?subject=AIRON%20demo%20igénylés" class="btn-primary text-lg">
+        Foglalj demo-t: info@fortytech.hu
+      </a>
+      <p class="text-muted text-sm mt-6">3-5 munkanap alatt személyre szabott ajánlatot küldünk.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PRICING — csomagok ár nélkül -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section id="pricing" class="py-32 border-t border-border/50 bg-bg2/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="label"><span class="accent-line align-middle mr-3"></span>CSOMAGOK</span>
+      <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-8 tracking-tight">
+        Három sztenderd csomag,<br>vagy egyedi megbeszélés alapján.
+      </h2>
+      <p class="text-lg text-muted max-w-2xl leading-relaxed mb-16">
+        Minden csomagot személyre szabunk a szervezet igényeire.
+        Az árazást Discovery meeting után, konkrét ajánlatként kapod meg.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Starter -->
+        <div class="card p-8 flex flex-col">
+          <div class="label mb-4">STARTER</div>
+          <div class="font-display text-2xl font-medium mb-2">Minimum életképes<br>governance</div>
+          <div class="text-muted text-sm mb-8">50-150 fős cégeknek · EU AI Act minimum</div>
+          <ul class="text-sm text-muted space-y-2 mb-8 flex-grow">
+            <li>✓ Max 15 AI rendszer, 8 user</li>
+            <li>✓ EU AI Act + GDPR framework</li>
+            <li>✓ Classification + RMS + FRIA workflow</li>
+            <li>✓ Weekly Briefing email</li>
+            <li>✓ SSO (Google / Microsoft)</li>
+            <li>✓ Standard email support</li>
+          </ul>
+          <a href="#pilot" class="btn-ghost text-center">Kérj ajánlatot</a>
+        </div>
+
+        <!-- Standard - highlighted -->
+        <div class="card p-8 flex flex-col border-2 border-teal/40 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-teal text-bg text-xs font-bold px-3 py-1 rounded-full tracking-wider">LEGNÉPSZERŰBB</div>
+          <div class="label mb-4">STANDARD</div>
+          <div class="font-display text-2xl font-medium mb-2">Teljes compliance<br>stack</div>
+          <div class="text-muted text-sm mb-8">150-500 fős cégeknek · minden framework</div>
+          <ul class="text-sm text-muted space-y-2 mb-8 flex-grow">
+            <li>✓ Max 40 AI rendszer, 25 user</li>
+            <li>✓ EU AI Act + GDPR + DORA + NIS2 + CSRD</li>
+            <li>✓ Live AI-workflow (Claude Haiku)</li>
+            <li>✓ Insurance Bridge + Sustainability</li>
+            <li>✓ Runtime IAM (AWS / Azure / GCP)</li>
+            <li>✓ Drift Detector, Bulk import wizard</li>
+            <li>✓ Custom subdomain + branding</li>
+            <li>✓ 4h response SLA + Slack channel</li>
+          </ul>
+          <a href="#pilot" class="btn-primary text-center">Kérj ajánlatot</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="card p-8 flex flex-col">
+          <div class="label mb-4">ENTERPRISE</div>
+          <div class="font-display text-2xl font-medium mb-2">Banking-tier<br>governance</div>
+          <div class="text-muted text-sm mb-8">500+ fős cégeknek · 24/7 SLA · multi-tenant</div>
+          <ul class="text-sm text-muted space-y-2 mb-8 flex-grow">
+            <li>✓ Unlimited AI rendszer + user</li>
+            <li>✓ SOC 2 Type II evidence collection</li>
+            <li>✓ Multi-tenant / sub-organization</li>
+            <li>✓ On-prem Kubernetes support</li>
+            <li>✓ Dedicated CSM + Steering Committee</li>
+            <li>✓ 24/7 SLA (S1: 30 perc response)</li>
+            <li>✓ On-call CTO escalation</li>
+          </ul>
+          <a href="mailto:info@fortytech.hu?subject=AIRON%20Enterprise%20érdeklődés" class="btn-ghost text-center">Kérj ajánlatot</a>
+        </div>
+      </div>
+
+      <!-- 4th option — TAILORED -->
+      <div class="card p-10 border-2 border-purple/30 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none">
+          <svg viewBox="0 0 240 240" class="w-full h-full">
+            <path d="M 150.78 35.4 A 90 90 0 1 1 35.4 89.22" stroke="#B083FF" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M 169.79 78.21 A 65 65 0 1 1 63.71 152.5" stroke="#B083FF" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8">
+          <div class="flex-1">
+            <div class="label mb-3" style="color:#B083FF">TAILORED · EGYEDI CSOMAG</div>
+            <h3 class="font-display font-medium text-3xl md:text-4xl mb-3 tracking-tight">
+              Nem illik egy csomag sem? Építsük fel a tiedet.
+            </h3>
+            <p class="text-muted leading-relaxed max-w-2xl">
+              Ha a szervezetnek egyedi igényei vannak — pl. banki tier custom modulokkal,
+              multi-régiós deploy, iparági compliance-keret (MNB, ESMA, EBA), integráció
+              meglévő GRC-vel — akkor egy 60 perces Discovery meeting-en kialakítjuk a
+              tökéletes csomagot.
+            </p>
+            <ul class="text-sm text-muted space-y-2 mt-6">
+              <li>✓ Egyedi feature-fejlesztés (min. 40 óra / negyedév dedikált SE)</li>
+              <li>✓ Egyedi SLA-tárgyalás (S1 response, uptime, escalation)</li>
+              <li>✓ Multi-régiós deploy + adatszuverén hosting</li>
+              <li>✓ Iparági compliance-modul (banking / insurance / healthcare)</li>
+              <li>✓ White-label branding + saját domain</li>
+              <li>✓ Legal keret egyedi ügyfélszerződéssel</li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-3 md:w-56">
+            <a href="mailto:info@fortytech.hu?subject=AIRON%20Tailored%20csomag%20-%20Discovery%20meeting" class="btn-primary text-center whitespace-nowrap">
+              Discovery meeting →
+            </a>
+            <div class="text-xs text-dim text-center">60 perc, ingyenes</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-muted text-sm mt-12">
+        Opcionális: <span class="text-teal">AI Maturity Assessment</span> add-on —
+        cégmérethez szabott 4 hetes diagnostic. Konkrét árajánlat Discovery után.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- FROM FORTYTECH -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-24 border-t border-border/50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <span class="label">A FORTYTECH TERMÉKE</span>
+      <h3 class="font-display font-medium text-3xl md:text-4xl mt-6 mb-6 tracking-tight">
+        Jogi, technológiai és üzleti szakértők.
+      </h3>
+      <p class="text-lg text-muted max-w-2xl mx-auto leading-relaxed mb-8">
+        Az AIRON a Fortytech Kft. saját SaaS terméke. A csapatunkban jogászok, AI-mérnökök és
+        üzleti tanácsadók dolgoznak együtt — komplex választ adunk minden AI-governance kérdésre.
+      </p>
+      <a href="https://fortytech.hu" target="_blank" rel="noopener" class="btn-ghost">
+        fortytech.hu ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <footer class="py-16 border-t border-border/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <svg viewBox="0 0 32 32" class="w-8 h-8">
+              <path d="M 20.10 4.72 A 12 12 0 1 1 4.72 11.90" stroke="#00E5B0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M 22.64 10.43 A 8.7 8.7 0 1 1 8.49 20.33" stroke="#00E5B0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+              <circle cx="20.10" cy="4.72" r="1.7" fill="#00E5B0"/>
+              <circle cx="4.72" cy="11.90" r="1.5" fill="#00E5B0"/>
+              <circle cx="22.64" cy="10.43" r="1.4" fill="#00E5B0"/>
+              <circle cx="8.49" cy="20.33" r="1.4" fill="#00E5B0"/>
+            </svg>
+            <span class="font-display font-medium text-lg tracking-widest">
+              <span class="text-purple">AI</span><span class="text-teal">RON</span>
+            </span>
+          </div>
+          <p class="text-muted text-sm max-w-xs">Enterprise AI Control Tower — a Fortytech Kft. saját SaaS terméke.</p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div class="label mb-2">KAPCSOLAT</div>
+          <a href="mailto:info@fortytech.hu" class="text-sm text-muted hover:text-teal transition">info@fortytech.hu</a>
+          <a href="https://fortytech.hu" class="text-sm text-muted hover:text-teal transition">fortytech.hu ↗</a>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div class="label mb-2">JOGI</div>
+          <a href="mailto:info@fortytech.hu?subject=MSA%20request" class="text-sm text-muted hover:text-teal transition">MSA / DPA / SLA sablonok</a>
+          <a href="mailto:info@fortytech.hu?subject=Security%20whitepaper" class="text-sm text-muted hover:text-teal transition">Security whitepaper</a>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-dim">
+        <div>© 2026 Fortytech Kft. · Minden jog fenntartva.</div>
+        <div>Készült Magyarországon · EU adatszuverén</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
