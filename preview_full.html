@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIRON — AI Control Tower · Enterprise AI Management</title>
-  <meta name="description" content="AIRON is an AI management platform — makes every enterprise AI system transparent, measurable, auditable, and controllable. EU AI Act ready.">
-  <meta name="keywords" content="AI governance, AI management, EU AI Act, AI compliance, AI Control Tower, AIRON, Fortytech">
+  <title>AIRON — AI Control Tower · Enterprise AI Governance</title>
+  <meta name="description" content="AIRON is an AI governance platform — makes every enterprise AI system transparent, measurable, auditable, and controllable. EU AI Act ready.">
+  <meta name="keywords" content="AI governance, EU AI Act, AI compliance, AI Control Tower, AIRON, Fortytech">
   <meta name="author" content="Fortytech Kft.">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="AIRON — AI Control Tower">
-  <meta property="og:description" content="Enterprise AI management platform — transparent, measurable, auditable, controllable.">
+  <meta property="og:description" content="Enterprise AI governance platform — transparent, measurable, auditable, controllable.">
   <meta property="og:image" content="og-image.png">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="hu_HU">
@@ -148,12 +148,144 @@
       background: #FFFFFF; border-radius: 20px; border: 1px solid #E2E8F0;
       box-shadow: 0 24px 60px rgba(15,20,32,0.14); overflow: hidden;
     }
-    .mockup-frame-dark {
-      background: #0B101B; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.35); overflow: hidden;
-    }
   </style>
-</head>
+<style>.!px-5 { padding-left:20.0px;padding-right:20.0px; }
+.!py-2 { padding-top:8.0px;padding-bottom:8.0px; }
+.absolute { position:absolute; }
+.bg-bg\/70 { background-color:rgba(15,20,32,0.7); }
+.bg-bg2\/30 { background-color:rgba(22,27,42,0.3); }
+.bg-teal { background-color:rgba(0,229,176,1.0); }
+.border-2 { border-width:2px;border-style:solid; }
+.border-border { border-color:rgba(255,255,255,0.06);border-style:solid;border-width:1px; }
+.border-border\/50 { border-color:rgba(255,255,255,0.5);border-style:solid;border-width:1px; }
+.border-purple\/30 { border-color:rgba(176,131,255,0.3);border-style:solid;border-width:1px; }
+.border-t { border-top:1px solid currentColor; }
+.border-teal\/40 { border-color:rgba(0,229,176,0.4);border-style:solid;border-width:1px; }
+.fixed { position:fixed; }
+.flex { display:flex; }
+.flex-col { flex-direction:column; }
+.flex-grow { flex-grow:1; }
+.font-bold { font-weight:700; }
+.font-medium { font-weight:500; }
+.gap-10 { gap:40.0px; }
+.gap-14 { gap:56.0px; }
+.gap-2 { gap:8.0px; }
+.gap-3 { gap:12.0px; }
+.gap-4 { gap:16.0px; }
+.gap-6 { gap:24.0px; }
+.gap-8 { gap:32.0px; }
+.grid { display:grid; }
+.grid-cols-1 { grid-template-columns:repeat(1,minmax(0,1fr)); }
+.grid-cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.h-8 { height:32.0px; }
+.hidden { display:none; }
+.inset-0 { top:0;right:0;bottom:0;left:0; }
+.inset-x-0 { left:0;right:0; }
+.items-center { align-items:center; }
+.items-start { align-items:flex-start; }
+.justify-between { justify-content:space-between; }
+.justify-center { justify-content:center; }
+.leading-\[1\.1\] { line-height:1.1; }
+.leading-relaxed { line-height:1.625; }
+.max-w-2xl { max-width:672px; }
+.max-w-3xl { max-width:768px; }
+.max-w-4xl { max-width:896px; }
+.max-w-5xl { max-width:1024px; }
+.max-w-6xl { max-width:1152px; }
+.max-w-7xl { max-width:1280px; }
+.max-w-xs { max-width:320px; }
+.mb-14 { margin-bottom:56.0px; }
+.mb-16 { margin-bottom:64.0px; }
+.mb-2 { margin-bottom:8.0px; }
+.mb-3 { margin-bottom:12.0px; }
+.mb-4 { margin-bottom:16.0px; }
+.mb-6 { margin-bottom:24.0px; }
+.mb-8 { margin-bottom:32.0px; }
+.mr-3 { margin-right:12.0px; }
+.mt-12 { margin-top:48.0px; }
+.mt-2 { margin-top:8.0px; }
+.mt-3 { margin-top:12.0px; }
+.mt-5 { margin-top:20.0px; }
+.mt-6 { margin-top:24.0px; }
+.mx-auto { margin-left:auto;margin-right:auto; }
+.overflow-hidden { overflow:hidden; }
+.p-10 { padding:40.0px; }
+.p-6 { padding:24.0px; }
+.p-8 { padding:32.0px; }
+.pb-12 { padding-bottom:48.0px; }
+.pt-16 { padding-top:64.0px; }
+.pt-8 { padding-top:32.0px; }
+.px-3 { padding-left:12.0px;padding-right:12.0px; }
+.px-6 { padding-left:24.0px;padding-right:24.0px; }
+.py-1 { padding-top:4.0px;padding-bottom:4.0px; }
+.py-16 { padding-top:64.0px;padding-bottom:64.0px; }
+.py-24 { padding-top:96.0px;padding-bottom:96.0px; }
+.py-32 { padding-top:128.0px;padding-bottom:128.0px; }
+.py-4 { padding-top:16.0px;padding-bottom:16.0px; }
+.relative { position:relative; }
+.rounded-full { border-radius:9999px; }
+.text-2xl { font-size:24px; }
+.text-3xl { font-size:30px; }
+.text-4xl { font-size:36px; }
+.text-5xl { font-size:48px; }
+.text-base { font-size:16px; }
+.text-bg { color:rgba(15,20,32,1.0); }
+.text-center { text-align:center; }
+.text-dim { color:rgba(100,116,139,1.0); }
+.text-left { text-align:left; }
+.text-lg { font-size:18px; }
+.text-muted { color:rgba(148,163,184,1.0); }
+.text-purple { color:rgba(176,131,255,1.0); }
+.text-sm { font-size:14px; }
+.text-teal { color:rgba(0,229,176,1.0); }
+.text-xl { font-size:20px; }
+.text-xs { font-size:12px; }
+.top-0 { top:0; }
+.tracking-tight { letter-spacing:-0.02em; }
+.tracking-wide { letter-spacing:0.025em; }
+.tracking-wider { letter-spacing:0.05em; }
+.tracking-widest { letter-spacing:0.1em; }
+.w-8 { width:32.0px; }
+.w-full { width:100%; }
+.whitespace-nowrap { white-space:nowrap; }
+.z-10 { z-index:10; }
+.z-50 { z-index:50; }
+@media (min-width:640px) {
+  .sm\:flex-row { flex-direction:row; }
+}
+@media (min-width:768px) {
+  .md\:flex { display:flex; }
+  .md\:flex-row { flex-direction:row; }
+  .md\:grid-cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .md\:grid-cols-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .md\:grid-cols-4 { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .md\:items-center { align-items:center; }
+  .md\:pb-16 { padding-bottom:64.0px; }
+  .md\:pt-16 { padding-top:64.0px; }
+  .md\:py-28 { padding-top:112.0px;padding-bottom:112.0px; }
+  .md\:text-2xl { font-size:24px; }
+  .md\:text-4xl { font-size:36px; }
+  .md\:text-5xl { font-size:48px; }
+  .md\:text-6xl { font-size:60px; }
+  .md\:text-lg { font-size:18px; }
+  .md\:text-xl { font-size:20px; }
+}
+@media (min-width:1024px) {
+  .lg\:grid-cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .lg\:grid-cols-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .lg\:text-7xl { font-size:72px; }
+}
+
+* { box-sizing: border-box; }
+body { font-family: 'Liberation Sans', Arial, sans-serif; }
+.font-display { font-family: 'Liberation Sans', Arial, sans-serif; font-weight: 700; }
+nav.fixed { position: static !important; }
+.hidden.md\:flex { display: flex; }
+.aurora { display: none; }
+.bg-grid, .bg-radial { background: none !important; }
+img.hero-logo { max-width: 500px; }
+</style></head>
 
 <body>
 
@@ -161,8 +293,17 @@
   <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-lg bg-bg/70 border-b border-border">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-3">
-        <img src="AIRON-icon.svg" alt="AIRON" class="w-8 h-8">
-        <span class="font-display font-medium text-lg tracking-widest" style="color:#00FFFF;">AIRON</span>
+        <svg viewBox="0 0 32 32" class="w-8 h-8">
+          <path d="M 20.10 4.72 A 12 12 0 1 1 4.72 11.90" stroke="#00E5B0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M 22.64 10.43 A 8.7 8.7 0 1 1 8.49 20.33" stroke="#00E5B0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <circle cx="20.10" cy="4.72" r="1.7" fill="#00E5B0"/>
+          <circle cx="4.72" cy="11.90" r="1.5" fill="#00E5B0"/>
+          <circle cx="22.64" cy="10.43" r="1.4" fill="#00E5B0"/>
+          <circle cx="8.49" cy="20.33" r="1.4" fill="#00E5B0"/>
+        </svg>
+        <span class="font-display font-medium text-lg tracking-widest">
+          <span class="text-purple">AI</span><span class="text-teal">RON</span>
+        </span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm text-muted">
         <a href="#features" class="hover:text-teal transition">Platform</a>
@@ -195,7 +336,7 @@
       <div class="hero-badge">
         <span class="hero-badge-line"></span>
         <span class="hero-badge-text">
-          Enterprise <span style="color:#00E5B0;">AI Management</span> Platform
+          Enterprise <span style="color:#00E5B0;">AI Governance</span> Platform
         </span>
       </div>
 
@@ -205,7 +346,7 @@
       </h1>
 
       <p class="text-base md:text-lg max-w-2xl mx-auto mb-6 leading-relaxed" style="color:#94A3B8;">
-        AIRON is an AI management platform — <span style="color:#00E5B0; font-weight:500;">real-time</span>
+        AIRON is an AI governance platform — <span style="color:#00E5B0; font-weight:500;">real-time</span>
         data making every enterprise AI system <span style="color:#F8FAFC; font-weight:500;">transparent, measurable, auditable and controllable</span>.
       </p>
 
@@ -336,107 +477,33 @@
 
   <!-- PROBLEM -->
   <section class="py-32 border-t border-border/50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-        <div>
-          <span class="label"><span class="accent-line align-middle mr-3"></span>THE PROBLEM</span>
-          <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-8 tracking-tight">
-            AI spreads through your organization faster than the controls that govern it.
-          </h2>
-          <p class="text-lg text-muted leading-relaxed mb-10">
-            Most organizations only realize AI risk when it has already happened.
-            Shadow AI, undocumented models and missing access controls create
-            an annual exposure of €5-50M in risk.
-          </p>
+    <div class="max-w-5xl mx-auto px-6">
+      <span class="label"><span class="accent-line align-middle mr-3"></span>THE PROBLEM</span>
+      <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-8 tracking-tight max-w-3xl">
+        AI spreads through your organization<br>faster than the controls that govern it.
+      </h2>
+      <p class="text-lg text-muted max-w-2xl leading-relaxed mb-16">
+        Most organizations only realize AI risk when it has already happened.
+        Shadow AI, undocumented models and missing access controls create
+        an annual exposure of €5-50M in risk.
+      </p>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="card p-6">
-              <div class="font-display text-lg text-teal mb-2">You don't know how many AI tools you use</div>
-              <p class="text-muted text-sm leading-relaxed">Employees use Copilot, ChatGPT, Grammarly — most of it without registration or approval.</p>
-            </div>
-            <div class="card p-6">
-              <div class="font-display text-lg text-teal mb-2">You don't know who owns them</div>
-              <p class="text-muted text-sm leading-relaxed">EU AI Act requires a named owner for every high-risk AI system. No name — instant fine risk.</p>
-            </div>
-            <div class="card p-6">
-              <div class="font-display text-lg text-teal mb-2">You don't see them drift</div>
-              <p class="text-muted text-sm leading-relaxed">Silent model drift, bias accumulation, scope creep — building up unnoticed over months.</p>
-            </div>
-            <div class="card p-6">
-              <div class="font-display text-lg text-teal mb-2">No measurable ROI</div>
-              <p class="text-muted text-sm leading-relaxed">AI cost is unplannable, value-return is accidental. The Board can't answer: is it worth it?</p>
-            </div>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">You don't know how many AI tools you use</div>
+          <p class="text-muted leading-relaxed">Employees use Copilot, ChatGPT, Grammarly — most of it without registration or approval.</p>
         </div>
-
-        <div class="mockup-frame-dark">
-          <svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;">
-            <defs>
-              <radialGradient id="glowP" cx="50%" cy="45%" r="60%">
-                <stop offset="0%" stop-color="#00E5B0" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#00E5B0" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="silP" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#1B2333"/>
-                <stop offset="100%" stop-color="#0B101B"/>
-              </linearGradient>
-            </defs>
-            <rect width="600" height="440" fill="#0B101B"/>
-            <circle cx="360" cy="190" r="220" fill="url(#glowP)"/>
-          
-            <!-- person silhouette, bust, bottom-left, cropped by frame -->
-            <path d="M -20 440 L -20 300 C -20 260 10 230 55 222 L 55 210 C 40 200 32 182 32 164 C 32 128 60 100 96 100 C 132 100 160 128 160 164 C 160 182 152 200 137 210 L 137 222 C 182 230 212 260 212 300 L 212 440 Z"
-                  fill="url(#silP)" stroke="rgba(0,229,176,0.28)" stroke-width="1.5"/>
-          
-            <!-- circuit traces from chest toward the hologram -->
-            <path d="M 160 250 L 230 250 L 260 220" fill="none" stroke="rgba(0,229,176,0.4)" stroke-width="1.5" stroke-dasharray="2 5"/>
-            <path d="M 150 200 L 260 170" fill="none" stroke="rgba(176,131,255,0.35)" stroke-width="1.5" stroke-dasharray="2 5"/>
-          
-            <!-- central AI hexagon chip -->
-            <g transform="translate(360,190)">
-              <polygon points="0,-70 61,-35 61,35 0,70 -61,35 -61,-35" fill="#12182A" stroke="#00E5B0" stroke-width="2"/>
-              <polygon points="0,-52 45,-26 45,26 0,52 -45,26 -45,-26" fill="none" stroke="rgba(0,229,176,0.35)" stroke-width="1"/>
-              <text x="0" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="1" fill="#F8FAFC">AI</text>
-            </g>
-          
-            <!-- circuit spokes from chip to satellite icon nodes -->
-            <path d="M 405 160 L 470 110" fill="none" stroke="rgba(0,229,176,0.45)" stroke-width="1.5"/>
-            <path d="M 420 190 L 500 190" fill="none" stroke="rgba(0,229,176,0.45)" stroke-width="1.5"/>
-            <path d="M 405 220 L 470 270" fill="none" stroke="rgba(245,158,11,0.5)" stroke-width="1.5" stroke-dasharray="3 4"/>
-            <path d="M 330 260 L 330 330" fill="none" stroke="rgba(245,158,11,0.5)" stroke-width="1.5" stroke-dasharray="3 4"/>
-          
-            <!-- governed satellite icon nodes -->
-            <g>
-              <circle cx="490" cy="100" r="26" fill="rgba(0,229,176,0.10)" stroke="#00E5B0" stroke-width="1.6"/>
-              <path d="M 480 100 L 487 107 L 501 92" fill="none" stroke="#00E5B0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <g>
-              <circle cx="530" cy="190" r="26" fill="rgba(0,229,176,0.10)" stroke="#00E5B0" stroke-width="1.6"/>
-              <circle cx="530" cy="190" r="4" fill="#00E5B0"/>
-              <circle cx="521" cy="182" r="3" fill="#00E5B0"/>
-              <circle cx="539" cy="182" r="3" fill="#00E5B0"/>
-              <circle cx="521" cy="198" r="3" fill="#00E5B0"/>
-              <circle cx="539" cy="198" r="3" fill="#00E5B0"/>
-            </g>
-          
-            <!-- unmapped / shadow icon nodes (amber, dashed, drifting away) -->
-            <g>
-              <circle cx="500" cy="285" r="24" fill="rgba(245,158,11,0.08)" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text x="500" y="291" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#F59E0B">?</text>
-            </g>
-            <g>
-              <circle cx="330" cy="355" r="22" fill="rgba(245,158,11,0.08)" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
-              <text x="330" y="361" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#F59E0B">?</text>
-            </g>
-          
-            <!-- labels -->
-            <text x="30" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.6" fill="#94A3B8">AI GOVERNANCE — LIVE VIEW</text>
-            <line x1="30" y1="392" x2="570" y2="392" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-            <circle cx="40" cy="412" r="5" fill="rgba(0,229,176,0.15)" stroke="#00E5B0" stroke-width="1.4"/>
-            <text x="54" y="416" font-family="Arial, sans-serif" font-size="11" fill="#94A3B8">Governed by AIRON</text>
-            <circle cx="230" cy="412" r="5" fill="rgba(245,158,11,0.12)" stroke="#F59E0B" stroke-width="1.4" stroke-dasharray="2 2"/>
-            <text x="244" y="416" font-family="Arial, sans-serif" font-size="11" fill="#94A3B8">Unmapped shadow AI</text>
-          </svg>
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">You don't know who owns them</div>
+          <p class="text-muted leading-relaxed">EU AI Act requires a named owner for every high-risk AI system. No name — instant fine risk.</p>
+        </div>
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">You don't see them drift</div>
+          <p class="text-muted leading-relaxed">Silent model drift, bias accumulation, scope creep — building up unnoticed over months.</p>
+        </div>
+        <div class="card p-8">
+          <div class="font-display text-2xl text-teal mb-3">No measurable ROI</div>
+          <p class="text-muted leading-relaxed">AI cost is unplannable, value-return is accidental. The Board can't answer: is it worth it?</p>
         </div>
       </div>
     </div>
@@ -541,114 +608,32 @@
 
   <!-- VALUE PILLARS -->
   <section class="py-32 border-t border-border/50 bg-bg2/30">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <span class="label"><span class="accent-line align-middle mr-3"></span>VALUE PROMISE</span>
+      <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-16 tracking-tight">
+        Four values, one platform.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <span class="label"><span class="accent-line align-middle mr-3"></span>VALUE PROMISE</span>
-          <h2 class="font-display font-medium text-4xl md:text-5xl mt-6 mb-10 tracking-tight">
-            Four values, one platform.
-          </h2>
-
-          <div class="space-y-8">
-            <div class="flex items-start gap-5">
-              <div class="font-display text-3xl text-teal tracking-wide" style="min-width:44px;">01</div>
-              <div>
-                <div class="font-display text-lg font-medium mb-1 tracking-wider">TRANSPARENT</div>
-                <p class="text-muted leading-relaxed">Every AI tool + owner + risk in one view. No shadow AI.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-5">
-              <div class="font-display text-3xl text-teal tracking-wide" style="min-width:44px;">02</div>
-              <div>
-                <div class="font-display text-lg font-medium mb-1 tracking-wider">MEASURABLE</div>
-                <p class="text-muted leading-relaxed">Real-time cost, ROI, performance and carbon — broken down per system.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-5">
-              <div class="font-display text-3xl text-teal tracking-wide" style="min-width:44px;">03</div>
-              <div>
-                <div class="font-display text-lg font-medium mb-1 tracking-wider">AUDITABLE</div>
-                <p class="text-muted leading-relaxed">EU AI Act, GDPR, DORA, NIS2 evidence pack — exportable in one click.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-5">
-              <div class="font-display text-3xl text-teal tracking-wide" style="min-width:44px;">04</div>
-              <div>
-                <div class="font-display text-lg font-medium mb-1 tracking-wider">CONTROLLABLE</div>
-                <p class="text-muted leading-relaxed">Policies, permissions, phase gates and drift alerts. Not just visibility — intervention.</p>
-              </div>
-            </div>
-          </div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">01</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">TRANSPARENT</div>
+          <p class="text-muted leading-relaxed">Every AI tool + owner + risk in one view. No shadow AI.</p>
         </div>
-
-        <div class="mockup-frame-dark">
-                    <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;">
-            <defs>
-              <radialGradient id="glowV" cx="55%" cy="45%" r="60%">
-                <stop offset="0%" stop-color="#B083FF" stop-opacity="0.16"/>
-                <stop offset="100%" stop-color="#B083FF" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="silV" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#1B2333"/>
-                <stop offset="100%" stop-color="#0B101B"/>
-              </linearGradient>
-            </defs>
-            <rect width="600" height="480" fill="#0B101B"/>
-            <circle cx="370" cy="220" r="230" fill="url(#glowV)"/>
-          
-            <!-- person silhouette, bust, bottom-left, cropped by frame -->
-            <path d="M -20 480 L -20 330 C -20 288 12 256 58 248 L 58 234 C 42 224 34 204 34 184 C 34 146 64 116 102 116 C 140 116 170 146 170 184 C 170 204 162 224 146 234 L 146 248 C 192 256 224 288 224 330 L 224 480 Z"
-                  fill="url(#silV)" stroke="rgba(176,131,255,0.28)" stroke-width="1.5"/>
-          
-            <!-- central AI hexagon chip -->
-            <g transform="translate(365,220)">
-              <polygon points="0,-72 62,-36 62,36 0,72 -62,36 -62,-36" fill="#12182A" stroke="#00E5B0" stroke-width="2"/>
-              <polygon points="0,-54 46,-27 46,27 0,54 -46,27 -46,-27" fill="none" stroke="rgba(0,229,176,0.35)" stroke-width="1"/>
-              <text x="0" y="10" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="1" fill="#F8FAFC">AIRON</text>
-            </g>
-          
-            <!-- circuit spokes -->
-            <path d="M 415 175 L 480 120" fill="none" stroke="rgba(0,229,176,0.45)" stroke-width="1.5"/>
-            <path d="M 428 220 L 505 220" fill="none" stroke="rgba(95,252,216,0.45)" stroke-width="1.5"/>
-            <path d="M 415 265 L 480 320" fill="none" stroke="rgba(176,131,255,0.45)" stroke-width="1.5"/>
-            <path d="M 340 288 L 300 355" fill="none" stroke="rgba(0,168,134,0.45)" stroke-width="1.5"/>
-          
-            <!-- 01 Transparent — eye icon -->
-            <g>
-              <circle cx="500" cy="105" r="27" fill="rgba(0,229,176,0.10)" stroke="#00E5B0" stroke-width="1.6"/>
-              <path d="M 486 105 C 490 97 496 93 500 93 C 504 93 510 97 514 105 C 510 113 504 117 500 117 C 496 117 490 113 486 105 Z" fill="none" stroke="#00E5B0" stroke-width="1.8"/>
-              <circle cx="500" cy="105" r="3.5" fill="#00E5B0"/>
-              <text x="500" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#94A3B8">01 TRANSPARENT</text>
-            </g>
-          
-            <!-- 02 Measurable — bar chart icon -->
-            <g>
-              <circle cx="540" cy="220" r="27" fill="rgba(95,252,216,0.10)" stroke="#5FFCD8" stroke-width="1.6"/>
-              <rect x="528" y="220" width="6" height="12" fill="#5FFCD8"/>
-              <rect x="537" y="212" width="6" height="20" fill="#5FFCD8"/>
-              <rect x="546" y="216" width="6" height="16" fill="#5FFCD8"/>
-              <text x="540" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#94A3B8">02 MEASURABLE</text>
-            </g>
-          
-            <!-- 03 Auditable — shield check icon -->
-            <g>
-              <circle cx="500" cy="335" r="27" fill="rgba(176,131,255,0.10)" stroke="#B083FF" stroke-width="1.6"/>
-              <path d="M 500 322 L 511 327 C 511 337 506 343 500 346 C 494 343 489 337 489 327 Z" fill="none" stroke="#B083FF" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="M 495 333 L 499 337 L 507 328" fill="none" stroke="#B083FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="500" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#94A3B8">03 AUDITABLE</text>
-            </g>
-          
-            <!-- 04 Controllable — dial icon -->
-            <g>
-              <circle cx="280" cy="390" r="27" fill="rgba(0,168,134,0.12)" stroke="#00A886" stroke-width="1.6"/>
-              <path d="M 268 396 A 15 15 0 0 1 292 396" fill="none" stroke="#00A886" stroke-width="1.8"/>
-              <line x1="280" y1="396" x2="288" y2="386" stroke="#00A886" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="280" cy="396" r="2.5" fill="#00A886"/>
-              <text x="280" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#94A3B8">04 CONTROLLABLE</text>
-            </g>
-          
-            <text x="30" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.6" fill="#94A3B8">FOUR VALUES — ONE PLATFORM</text>
-          </svg>
+        <div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">02</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">MEASURABLE</div>
+          <p class="text-muted leading-relaxed">Real-time cost, ROI, performance and carbon — broken down per system.</p>
+        </div>
+        <div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">03</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">AUDITABLE</div>
+          <p class="text-muted leading-relaxed">EU AI Act, GDPR, DORA, NIS2 evidence pack — exportable in one click.</p>
+        </div>
+        <div>
+          <div class="font-display text-5xl md:text-6xl text-teal mb-6 tracking-wide">04</div>
+          <div class="font-display text-xl md:text-2xl font-medium mb-4 tracking-wider">CONTROLLABLE</div>
+          <p class="text-muted leading-relaxed">Policies, permissions, phase gates and drift alerts. Not just visibility — intervention.</p>
         </div>
       </div>
     </div>
@@ -847,8 +832,17 @@
       <div class="flex flex-col md:flex-row justify-between items-start gap-8">
         <div>
           <div class="flex items-center gap-3 mb-4">
-            <img src="AIRON-icon.svg" alt="AIRON" class="w-8 h-8">
-            <span class="font-display font-medium text-lg tracking-widest" style="color:#00FFFF;">AIRON</span>
+            <svg viewBox="0 0 32 32" class="w-8 h-8">
+              <path d="M 20.10 4.72 A 12 12 0 1 1 4.72 11.90" stroke="#00E5B0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <path d="M 22.64 10.43 A 8.7 8.7 0 1 1 8.49 20.33" stroke="#00E5B0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85"/>
+              <circle cx="20.10" cy="4.72" r="1.7" fill="#00E5B0"/>
+              <circle cx="4.72" cy="11.90" r="1.5" fill="#00E5B0"/>
+              <circle cx="22.64" cy="10.43" r="1.4" fill="#00E5B0"/>
+              <circle cx="8.49" cy="20.33" r="1.4" fill="#00E5B0"/>
+            </svg>
+            <span class="font-display font-medium text-lg tracking-widest">
+              <span class="text-purple">AI</span><span class="text-teal">RON</span>
+            </span>
           </div>
           <p class="text-muted text-sm max-w-xs">Enterprise AI Control Tower — a proprietary SaaS product of Fortytech Kft.</p>
         </div>
